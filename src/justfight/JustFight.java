@@ -1,7 +1,8 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+*/
+
 package justfight;
 
 import javax.swing.JOptionPane;
@@ -14,6 +15,7 @@ public class JustFight {
         int damage = 0; // Initialize damage to 0
 
         while (true) {
+            // Display the main menu options
             String[] options = {"Add Fighter", "Start Battle", "Exit"};
             int choice = JOptionPane.showOptionDialog(
                     null,
@@ -27,10 +29,27 @@ public class JustFight {
             );
 
             switch (choice) {
-                case 0: // Add Fighter
-                    String damageType = JOptionPane.showInputDialog("Enter the damage type for the character:");
-                    if (damageType == null || damageType.trim().isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "Invalid input. Please enter a damage type.");
+                case 0 -> {
+                    // Add Fighter
+                    String damageType;
+                    while (true) {
+                        damageType = JOptionPane.showInputDialog("Enter the damage type for the character (numbers only):");
+
+                        if (damageType == null) {
+                            // User clicked Cancel, return to the main menu
+                            break;
+                        }
+
+                        // Check if the input contains only numeric characters
+                        if (damageType.matches("\\d+")) {
+                            break; // Exit the loop if the input is valid
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Invalid input. Please enter a damage type with numbers only.");
+                        }
+                    }
+
+                    if (damageType == null) {
+                        // User clicked Cancel, return to the main menu
                         continue;
                     }
 
@@ -39,30 +58,58 @@ public class JustFight {
                         JOptionPane.showMessageDialog(null, "Invalid input. Please enter a character class.");
                         continue;
                     }
-                    characters.add(new CharacterBP(damageType, characterClass));
-                    break;
 
-                case 1: // Start Battle
+                    int armor = 0;
+                    while (true) {
+                        String armorInput = JOptionPane.showInputDialog("Enter armor value (0 if none):");
+                        if (armorInput == null) {
+                            // User clicked Cancel, return to the main menu
+                            break;
+                        }
+
+                        try {
+                            armor = Integer.parseInt(armorInput);
+                            break; // Exit the loop if a valid numeric value is entered
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid numeric armor value.");
+                        }
+                    }
+
+                    characters.add(new Warrior(damageType, characterClass, armor));
+                }
+
+                case 1 -> {
+                    // Start Battle
                     if (characters.size() < 2) {
                         JOptionPane.showMessageDialog(null, "You need at least 2 fighters to start a battle.");
                         continue;
                     }
 
-                    String damageInput = JOptionPane.showInputDialog("Enter the damage to inflict:");
-                    try {
-                        damage = Integer.parseInt(damageInput);
-                    } catch (NumberFormatException e) {
-                        JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid numeric damage value.");
-                        continue;
+                    String damageInput;
+                    while (true) {
+                        damageInput = JOptionPane.showInputDialog("Enter the damage to inflict (numbers only):");
+
+                        if (damageInput == null) {
+                            // User clicked Cancel, return to the main menu
+                            break;
+                        }
+
+                        // Check if the input contains only numeric characters
+                        if (damageInput.matches("\\d+")) {
+                            damage = Integer.parseInt(damageInput);
+                            break; // Exit the loop if the input is valid
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid numeric damage value.");
+                        }
                     }
 
-                    // Start the battle logic (similar to your previous code)
+                    // Start the battle logic
                     Random random = new Random();
                     while (characters.size() > 1) {
                         int attackerIndex = random.nextInt(characters.size());
                         int defenderIndex = random.nextInt(characters.size());
-                        if (defenderIndex == attackerIndex) {
-                            defenderIndex = (defenderIndex + 1) % characters.size();
+                        while (defenderIndex == attackerIndex) {
+                            defenderIndex = random.nextInt(characters.size());
                         }
                         CharacterBP attacker = characters.get(attackerIndex);
                         CharacterBP defender = characters.get(defenderIndex);
@@ -79,7 +126,7 @@ public class JustFight {
 
                         // Sleep for 3 seconds
                         try {
-                            Thread.sleep(1000); // 1000 milliseconds = 1 seconds
+                            Thread.sleep(1000); // 1000 milliseconds = 1 second
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -91,9 +138,9 @@ public class JustFight {
                     } else {
                         System.out.println("Game over! No winners.");
                     }
-                    break;
+                }
 
-                case 2: // Exit
+                case 2 -> // Exit
                     System.exit(0);
             }
         }
