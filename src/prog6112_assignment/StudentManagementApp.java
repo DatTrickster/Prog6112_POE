@@ -4,21 +4,24 @@
  */
 package prog6112_assignment;
 
-
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManagementApp {
 
+    // A list to store student objects
     private final List<OBJStudent> students;
 
+    // Constructor initializes the students list
     public StudentManagementApp() {
         students = new ArrayList<>();
     }
 
+    // The main entry point of the application
     public void start() {
         while (true) {
+            // Display the menu and get the user's choice as a string
             String choiceStr = JOptionPane.showInputDialog(null, getMenu(), "Student Management Application", JOptionPane.PLAIN_MESSAGE);
 
             if (choiceStr == null) {
@@ -34,6 +37,7 @@ public class StudentManagementApp {
                 continue; // Return to the main menu on invalid input
             }
 
+            // Process the user's choice
             switch (choice) {
                 case 1 -> captureNewStudent();
                 case 2 -> searchForStudent();
@@ -45,6 +49,7 @@ public class StudentManagementApp {
         }
     }
 
+    // Generates the menu options as a string
     private String getMenu() {
         return "Please select an option:\n" +
                 "1. Capture a New Student\n" +
@@ -54,6 +59,7 @@ public class StudentManagementApp {
                 "5. Exit Application";
     }
 
+    // Method to capture information for a new student
     private void captureNewStudent() {
         int id;
         while (true) {
@@ -125,10 +131,12 @@ public class StudentManagementApp {
             }
         }
 
+        // Create a new student object and add it to the list
         students.add(new OBJStudent(id, name, age, email, course));
         JOptionPane.showMessageDialog(null, "Student details have been successfully saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    // Method to search for a student by ID
     private void searchForStudent() {
         int id;
         while (true) {
@@ -161,6 +169,7 @@ public class StudentManagementApp {
         }
     }
 
+    // Method to delete a student by ID
     private void deleteStudent() {
         int id;
         while (true) {
@@ -199,6 +208,7 @@ public class StudentManagementApp {
         }
     }
 
+    // Method to display details of a student
     private void displayStudent(OBJStudent student) {
         String studentDetails = "Student ID: " + student.getId() + "\n" +
                 "Student Name: " + student.getName() + "\n" +
@@ -209,7 +219,8 @@ public class StudentManagementApp {
         JOptionPane.showMessageDialog(null, studentDetails, "Student Details", JOptionPane.INFORMATION_MESSAGE);
     }
 
- private void displayStudentReport() {
+    // Method to display a report of all students
+    private void displayStudentReport() {
         if (students.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No student records found. Capture a student first.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
@@ -230,15 +241,11 @@ public class StudentManagementApp {
             count++;
         }
 
-        // Print the report to the console
+        // Print the report to the console (optional)
         System.out.println(report.toString());
 
         JOptionPane.showMessageDialog(null, report.toString(), "Student Report", JOptionPane.PLAIN_MESSAGE);
     }
- 
- 
- 
- 
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
@@ -247,14 +254,3 @@ public class StudentManagementApp {
         });
     }
 }
-
-
-
-
-/*
-Code reference:
-
-https://stackoverflow.com/questions/59841633/im-doing-a-student-management-project-in-java-and-get-serializable-exception-er
-
-
-*/
