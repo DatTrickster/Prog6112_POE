@@ -1,7 +1,7 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
-*/
+ */
 
 package justfight;
 
@@ -11,6 +11,7 @@ import java.util.Random;
 
 public class JustFight {
     public static void main(String[] args) {
+        // Create an ArrayList to store character objects
         ArrayList<CharacterBP> characters = new ArrayList<>();
         int damage = 0; // Initialize damage to 0
 
@@ -75,6 +76,7 @@ public class JustFight {
                         }
                     }
 
+                    // Create a new Warrior object and add it to the characters ArrayList
                     characters.add(new Warrior(damageType, characterClass, armor));
                 }
 
@@ -124,9 +126,9 @@ public class JustFight {
                             characters.remove(defender);
                         }
 
-                        // Sleep for 3 seconds
+                        // Sleep for 1 second to simulate the battle pace
                         try {
-                            Thread.sleep(1000); // 1000 milliseconds = 1 second
+                            Thread.sleep(1000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
