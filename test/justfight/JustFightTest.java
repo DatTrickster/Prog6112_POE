@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 
 public class JustFightTest {
 
+    // Inner class representing a character for testing purposes
     static class CharacterBP {
         private String damageType;
         private String characterClass;
@@ -22,6 +23,7 @@ public class JustFightTest {
             this.alive = true;
         }
 
+        // Getter methods
         public String getDamageType() {
             return damageType;
         }
@@ -38,6 +40,7 @@ public class JustFightTest {
             return alive;
         }
 
+        // Method to simulate taking damage
         public void takeDamage(int damage) {
             this.health -= damage;
             if (health <= 0) {
@@ -46,6 +49,7 @@ public class JustFightTest {
         }
     }
 
+    // Inner class representing the main game logic for testing purposes
     static class JustFight {
         private int exitStatus;
 
@@ -57,6 +61,7 @@ public class JustFightTest {
             return exitStatus;
         }
 
+        // Simulate the fight logic (for testing, returns a dummy message)
         public String simulateFight(CharacterBP[] fighters, Runnable exitCallback) {
             // Implement fight simulation logic here
             // For simplicity, we'll return a dummy message
@@ -68,6 +73,7 @@ public class JustFightTest {
         }
     }
 
+    // Test case to verify character initialization
     @Test
     public void testCharacterInitialization() {
         CharacterBP character = new CharacterBP("Fire", "Mage");
@@ -77,6 +83,7 @@ public class JustFightTest {
         assertTrue(character.isAlive());
     }
 
+    // Test case to verify character's health after taking damage
     @Test
     public void testHealthAfterTakingDamage() {
         CharacterBP character = new CharacterBP("Physical", "Warrior");
@@ -87,6 +94,7 @@ public class JustFightTest {
         assertEquals(200, character.getHealth());
     }
 
+    // Test case to verify handling of insufficient fighters to start a battle
     @Test
     public void testAllCharactersDefeated() {
         JustFight justFight = new JustFight();
@@ -95,6 +103,7 @@ public class JustFightTest {
         assertTrue(message.contains("You need at least 2 fighters to start a battle."));
     }
 
+    // Test case to verify the exit option status
     @Test
     public void testExitOption() {
         JustFight justFight = new JustFight();
@@ -102,6 +111,7 @@ public class JustFightTest {
         assertEquals(0, justFight.getExitStatus());
     }
 
+    // Test case to verify handling of insufficient fighters (one fighter and one null)
     @Test
     public void testInsufficientFightersToStart() {
         JustFight justFight = new JustFight();
@@ -110,6 +120,7 @@ public class JustFightTest {
         assertTrue(message.contains("You need at least 2 fighters to start a battle."));
     }
 
+    // Test case to simulate a fight with random damage and check for a winner
     @Test
     public void testFightSimulationWithRandomDamage() {
         JustFight justFight = new JustFight();
