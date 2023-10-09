@@ -39,13 +39,13 @@ public class Question1 {
         // Display the camera technology report
         System.out.println("CAMERA TECHNOLOGY REPORT");
         System.out.println("-------------------------------------------");
-        System.out.printf("%-15s%-15s%-15s%n", "","Mirrorless", "DSLR");
-
+        System.out.printf("%-13s%-15s%-15s%n", "","Mirrorless", "  DSLR");
+// spacing controls
         // Iterate through each manufacturer and their prices
         for (int i = 0; i < Product.length; i++) {
             System.out.printf("%-13sR %,13.2f  R %,13.2f%n", Product[i], prices[i][0], prices[i][1]);
         }
-
+// format controls
 
 
 
