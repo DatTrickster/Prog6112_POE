@@ -83,6 +83,7 @@ public class Question1 {
 
 
 /* code reference 
+https://github.com/fb-shaik/PROG6112-Group1-2023.git
 https://www.geeksforgeeks.org/java-string-format-method-with-examples/
 https://www.w3resource.com/java-exercises/datatypes/java-datatype-exercise-9.php
 https://www.geeksforgeeks.org/find-n-integers-given-difference-product-sum/
