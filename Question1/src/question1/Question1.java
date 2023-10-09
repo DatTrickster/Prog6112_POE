@@ -31,20 +31,24 @@ package question1;
 public class Question1 {
 
     public static void main(String[] args) {
-    // Camera Product and their prices for Mirrorless and DSLR cameras
-         String[] Product = {"CANON", "SONY", "NIKON"};
-          double[][] prices = {{10500.00, 8500.00}, {9500.00, 7200.00}, {12000.00, 8000.00}};
 
-                            // Display the camera technology report
-                            System.out.println("-------------------------------------------");
-                            System.out.println("CAMERA TECHNOLOGY REPORT");
-                            System.out.println("-------------------------------------------");
-                            System.out.printf("%-15s%-15s%-15s%n", "", "Mirrorless", "DSLR");
+        // Camera Product and their prices for Mirrorless and DSLR cameras
+        String[] Product = {"CANON", "SONY", "NIKON"};
+        double[][] prices = {{10500.00, 8500.00}, {9500.00, 7200.00}, {12000.00, 8000.00}};
 
-         // Iterate through each manufacturer and their prices
-         for (int i = 0; i < Product.length; i++) {
-             System.out.printf("%-15sR %.2f    R %.2f%n", Product[i], prices[i][0], prices[i][1]);
-         }
+        // Display the camera technology report
+        System.out.println("CAMERA TECHNOLOGY REPORT");
+        System.out.println("-------------------------------------------");
+        System.out.printf("%-15s%-15s%-15s%n", "","Mirrorless", "DSLR");
+
+        // Iterate through each manufacturer and their prices
+        for (int i = 0; i < Product.length; i++) {
+            System.out.printf("%-13sR %,13.2f  R %,13.2f%n", Product[i], prices[i][0], prices[i][1]);
+        }
+
+
+
+
          System.out.println("-------------------------------------------");
 
          // Calculate and display the camera technology results
@@ -83,7 +87,6 @@ public class Question1 {
 
 
 /* code reference 
-https://github.com/fb-shaik/PROG6112-Group1-2023.git
 https://www.geeksforgeeks.org/java-string-format-method-with-examples/
 https://www.w3resource.com/java-exercises/datatypes/java-datatype-exercise-9.php
 https://www.geeksforgeeks.org/find-n-integers-given-difference-product-sum/
