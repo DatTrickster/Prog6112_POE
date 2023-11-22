@@ -2,23 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
+
 package st10228343question1;
 
-/**
- * Main class for the Estate Agents Sales Report application.
- * 
- * This program calculates and displays the sales report for two estate agents,
- * including total property sales, 2% commission earned, and the top-performing estate agent.
- * 
- * @author Extinction
- */
 public class St10228343Question1 {
-    
-    /**
-     * Main method where the program execution begins.
-     * 
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
         // Two-dimensional array to store property sales data for two estate agents
         String[][] estateAgentsSales = {
@@ -27,7 +15,7 @@ public class St10228343Question1 {
         };
 
         // Create an instance of the EstateAgent class
-        EstateAgent estateAgentCalculator = new EstateAgent();
+        IEstateAgent estateAgentCalculator = new EstateAgent();
 
         // Display the Sales Report Header
         System.out.println("Estate Agents Sales Report");
@@ -44,12 +32,32 @@ public class St10228343Question1 {
         }
 
         // Calculate and Display total property sales for each estate agent
-        propSales.displayTotalPropertySales(estateAgentsSales);
+        displayTotalPropertySales(estateAgentsSales, estateAgentCalculator);
 
         // Calculate and Display total 2% commission earned by each estate agent
-        propSales.displaySalesCommission(estateAgentsSales);
+        displaySalesCommission(estateAgentsSales, estateAgentCalculator);
 
         // Determine and Display the top-performing estate agent
+        displayTopPerformingAgent(estateAgentsSales, estateAgentCalculator);
+    }
+
+    private static void displayTotalPropertySales(String[][] estateAgentsSales, IEstateAgent estateAgentCalculator) {
+        System.out.println("\nTotal Property Sales:");
+        for (String[] estateAgent : estateAgentsSales) {
+            double totalSales = estateAgentCalculator.estateAgentSales(convertStringArrayToDoubleArray(estateAgent, 1));
+            System.out.println("Total property sales for " + estateAgent[0] + " = R" + formatCurrency(totalSales));
+        }
+    }
+
+    private static void displaySalesCommission(String[][] estateAgentsSales, IEstateAgent estateAgentCalculator) {
+        System.out.println("\nSales Commission:");
+        for (String[] estateAgent : estateAgentsSales) {
+            double totalCommission = estateAgentCalculator.estateAgentCommission(getTotalSales(estateAgent, 1));
+            System.out.println("Sales Commission for " + estateAgent[0] + " = R" + formatCurrency(totalCommission));
+        }
+    }
+
+    private static void displayTopPerformingAgent(String[][] estateAgentsSales, IEstateAgent estateAgentCalculator) {
         double[] totalSales = new double[estateAgentsSales.length];
         for (int i = 0; i < estateAgentsSales.length; i++) {
             totalSales[i] = estateAgentCalculator.estateAgentSales(convertStringArrayToDoubleArray(estateAgentsSales[i], 1));
@@ -58,13 +66,6 @@ public class St10228343Question1 {
         System.out.println("\nThe Top-Selling Estate Agent is: " + estateAgentsSales[topAgent][0]);
     }
 
-    /**
-     * Helper method to convert a portion of String array to double array.
-     * 
-     * @param array the input String array
-     * @param startIndex the index to start conversion from
-     * @return a double array containing the converted values
-     */
     private static double[] convertStringArrayToDoubleArray(String[] array, int startIndex) {
         double[] result = new double[array.length - startIndex];
         for (int i = startIndex; i < array.length; i++) {
@@ -73,6 +74,17 @@ public class St10228343Question1 {
         return result;
     }
 
+    private static double getTotalSales(String[] estateAgent, int startIndex) {
+        double totalSales = 0;
+        for (int i = startIndex; i < estateAgent.length; i++) {
+            totalSales += Double.parseDouble(estateAgent[i].substring(1).replace(",", ""));
+        }
+        return totalSales;
+    }
+
+    private static String formatCurrency(double amount) {
+        return String.format("%,.0f", amount);
+    }
 }
 
 
@@ -85,3 +97,4 @@ Different ways to declare and initialize 2-D array in Java (2023) GeeksforGeeks.
 Available at: https://www.geeksforgeeks.org/different-ways-to-declare-and-initialize-2-d-array-in-java/ (Accessed: 22 November 2023). 
 
 */
+
