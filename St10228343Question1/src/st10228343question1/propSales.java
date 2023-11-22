@@ -85,3 +85,13 @@ public class propSales {
         return String.format("%,.0f", amount);
     }
 }
+
+
+/*
+Code reference:
+[solved] Q11 contain a twodimensional array to contain three property - software development (IPMA6212) (no date) Studocu. 
+Available at: https://www.studocu.com/en-za/messages/question/4655379/q11-contain-a-two-dimensional-array-to-contain-three-property-sales-for-january-february-and (Accessed: 22 November 2023). 
+
+
+
+*/
