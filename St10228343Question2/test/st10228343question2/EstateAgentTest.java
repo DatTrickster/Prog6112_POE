@@ -8,12 +8,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author Extinction
+ * Unit tests for the EstateAgent class.
+ * The tests cover commission calculation and data validation.
  */
 public class EstateAgentTest {
-    
 
+    /**
+     * DummyEstateAgent class for testing purposes.
+     * Overrides the necessary methods with dummy implementations.
+     */
     private static class DummyEstateAgent implements IEstateAgent {
         @Override
         public double calculateCommission(double propertyPrice, double commissionPercentage) {
@@ -33,7 +36,11 @@ public class EstateAgentTest {
             throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
     }
-     @Test
+
+    /**
+     * Tests the successful calculation of commission.
+     */
+    @Test
     public void calculateCommission_CalculatedSuccessfully() {
         IEstateAgent estateAgent = new EstateAgent();
         double propertyPrice = 1000000; // Replace with your dummy data
@@ -45,6 +52,9 @@ public class EstateAgentTest {
         assertEquals(25000, commission, 0.001);
     }
 
+    /**
+     * Tests an unsuccessful commission calculation (for demonstration purposes).
+     */
     @Test
     public void calculateCommission_CalculatedUnsuccessfully() {
         IEstateAgent estateAgent = new EstateAgent();
@@ -57,8 +67,10 @@ public class EstateAgentTest {
         assertNotEquals(25000, commission, 0.001);
     }
 
-
-        @Test
+    /**
+     * Tests the validation logic when the name is not present.
+     */
+    @Test
     public void validateData_NameNotPresent() {
         IEstateAgent estateAgent = new DummyEstateAgent();
 
@@ -69,5 +81,4 @@ public class EstateAgentTest {
         assertNotNull(validationMessage);
         assertEquals("Agent name is required", validationMessage);
     }
-    
 }
