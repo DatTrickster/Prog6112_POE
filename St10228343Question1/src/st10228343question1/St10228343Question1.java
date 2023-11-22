@@ -5,11 +5,21 @@
 package st10228343question1;
 
 /**
- *
+ * Main class for the Estate Agents Sales Report application.
+ * 
+ * This program calculates and displays the sales report for two estate agents,
+ * including total property sales, 2% commission earned, and the top-performing estate agent.
+ * 
  * @author Extinction
  */
 public class St10228343Question1 {
-public static void main(String[] args) {
+    
+    /**
+     * Main method where the program execution begins.
+     * 
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
         // Two-dimensional array to store property sales data for two estate agents
         String[][] estateAgentsSales = {
                 {"Joe Bloggs", "800000", "1500000", "2000000"},   // Joe Bloggs
@@ -48,7 +58,13 @@ public static void main(String[] args) {
         System.out.println("\nThe Top-Selling Estate Agent is: " + estateAgentsSales[topAgent][0]);
     }
 
-    // Helper method to convert a portion of String array to double array
+    /**
+     * Helper method to convert a portion of String array to double array.
+     * 
+     * @param array the input String array
+     * @param startIndex the index to start conversion from
+     * @return a double array containing the converted values
+     */
     private static double[] convertStringArrayToDoubleArray(String[] array, int startIndex) {
         double[] result = new double[array.length - startIndex];
         for (int i = startIndex; i < array.length; i++) {
