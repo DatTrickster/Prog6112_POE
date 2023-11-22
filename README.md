@@ -13,4 +13,5 @@ John MulaneyJohn Mulaney&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 
 [solved] Q11 contain a twodimensional array to contain three property - software development (IPMA6212) (no date) Studocu. Available at: https://www.studocu.com/en-za/messages/question/4655379/q11-contain-a-two-dimensional-array-to-contain-three-property-sales-for-january-february-and (Accessed: 22 November 2023). 
 
-
+# Prog6112_EXAM UNIT TEST
+UNIT TESTING VERSION junit-platform-console-standalone-1.6.0
