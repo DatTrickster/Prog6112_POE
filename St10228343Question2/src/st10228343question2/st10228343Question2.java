@@ -24,13 +24,13 @@ import javax.swing.border.LineBorder;
  */
 public class st10228343Question2 extends JFrame {
     // Components for the GUI
-    private JComboBox<String> locationComboBox;
-    private JTextField nameTextField;
-    private JTextField priceTextField;
-    private JTextField commissionTextField;
-    private JTextArea reportTextArea;
-    private JLabel estateAgentReportLabel;
-    private IEstateAgent estateAgent;
+                    private JComboBox<String> locationComboBox;
+                private JTextField nameTextField;
+                    private JTextField priceTextField;
+                private JTextField commissionTextField;
+                    private JTextArea reportTextArea;
+                private JLabel estateAgentReportLabel;
+                    private IEstateAgent estateAgent;
 
     /**
      * Constructs the EstateAgentCommissionApp.
@@ -48,24 +48,24 @@ public class st10228343Question2 extends JFrame {
         // Create components with rounded edges
         String[] locations = {"Cape Town", "Durban", "Pretoria"};
         locationComboBox = new JComboBox<>(locations);
-        locationComboBox.setBorder(roundedBorder);
+            locationComboBox.setBorder(roundedBorder);
         nameTextField = new JTextField(20);
-        nameTextField.setBorder(roundedBorder);
+            nameTextField.setBorder(roundedBorder);
         priceTextField = new JTextField(20);
         priceTextField.setBorder(roundedBorder);
-        commissionTextField = new JTextField(20);
+            commissionTextField = new JTextField(20);
         commissionTextField.setBorder(roundedBorder);
         reportTextArea = new JTextArea(10, 30);
-        reportTextArea.setEditable(false);
+            reportTextArea.setEditable(false);
         reportTextArea.setBorder(roundedBorder);
 
         estateAgentReportLabel = new JLabel("ESTATE AGENT REPORT");
-        estateAgentReportLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        estateAgentReportLabel.setBorder(roundedBorder);
+              estateAgentReportLabel.setFont(new Font("Arial", Font.BOLD, 16));
+                    estateAgentReportLabel.setBorder(roundedBorder);
 
         // Create menu bar
-        JMenuBar menuBar = new JMenuBar();
-        setJMenuBar(menuBar);
+            JMenuBar menuBar = new JMenuBar();
+                        setJMenuBar(menuBar);
 
         // Create File menu
         JMenu fileMenu = new JMenu("File");
@@ -73,12 +73,12 @@ public class st10228343Question2 extends JFrame {
         exitMenuItem.addActionListener((ActionEvent e) -> {
             System.exit(0);
         });
-        fileMenu.add(exitMenuItem);
+                    fileMenu.add(exitMenuItem);
 
         // Create Tools menu
         JMenu toolsMenu = new JMenu("Tools");
-        JMenuItem processReportMenuItem = new JMenuItem("Process Report");
-        processReportMenuItem.addActionListener((ActionEvent e) -> {
+                JMenuItem processReportMenuItem = new JMenuItem("Process Report");
+                            processReportMenuItem.addActionListener((ActionEvent e) -> {
             processReport();
         });
 
@@ -87,7 +87,7 @@ public class st10228343Question2 extends JFrame {
             clearFields();
         });
 
-        JMenuItem saveReportMenuItem = new JMenuItem("Save Report");
+                JMenuItem saveReportMenuItem = new JMenuItem("Save Report");
         saveReportMenuItem.addActionListener((ActionEvent e) -> {
             saveReportToFile();
         });
@@ -104,15 +104,15 @@ public class st10228343Question2 extends JFrame {
         setLayout(new BorderLayout());
 
         JPanel inputPanel = new JPanel(new GridLayout(4, 2, 5, 5));
-        inputPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-        inputPanel.add(new JLabel("Location:"));
-        inputPanel.add(locationComboBox);
+                inputPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+                inputPanel.add(new JLabel("Location:"));
+            inputPanel.add(locationComboBox);
         inputPanel.add(new JLabel("Agent Name:"));
-        inputPanel.add(nameTextField);
+            inputPanel.add(nameTextField);
         inputPanel.add(new JLabel("Property Price (ZAR):"));
-        inputPanel.add(priceTextField);
+            inputPanel.add(priceTextField);
         inputPanel.add(new JLabel("Commission Percentage:"));
-        inputPanel.add(commissionTextField);
+            inputPanel.add(commissionTextField);
 
         JPanel buttonPanel = new JPanel();
         JButton calculateButton = new JButton("Calculate Commission");
@@ -122,9 +122,9 @@ public class st10228343Question2 extends JFrame {
         buttonPanel.add(calculateButton);
 
         // Add components to the frame
-        add(inputPanel, BorderLayout.NORTH);
+            add(inputPanel, BorderLayout.NORTH);
         add(buttonPanel, BorderLayout.CENTER);
-        add(estateAgentReportLabel, BorderLayout.CENTER);
+            add(estateAgentReportLabel, BorderLayout.CENTER);
         add(new JScrollPane(reportTextArea), BorderLayout.SOUTH);
 
         // Set up visibility
@@ -141,10 +141,10 @@ public class st10228343Question2 extends JFrame {
      */
     private void processReport() {
         // Validate data
-        String agentName = nameTextField.getText();
+            String agentName = nameTextField.getText();
         String location = (String) locationComboBox.getSelectedItem();  // Get selected location
         double propertyPrice;
-        double commissionPercentage;
+            double commissionPercentage;
 
         try {
             propertyPrice = Double.parseDouble(priceTextField.getText());
@@ -164,9 +164,9 @@ public class st10228343Question2 extends JFrame {
         double commission = estateAgent.calculateCommission(propertyPrice, commissionPercentage);
 
         // Format currency
-        CurrencyFormatter currencyFormatter = new CurrencyFormatter();
+            CurrencyFormatter currencyFormatter = new CurrencyFormatter();
         String formattedPrice = currencyFormatter.formatCurrency(propertyPrice);
-        String formattedCommission = currencyFormatter.formatCurrency(commission);
+            String formattedCommission = currencyFormatter.formatCurrency(commission);
 
         // Display report in the text area
         String report = "Location: " + location + "\n"
