@@ -18,10 +18,10 @@ public class St10228343Question1 {
         IEstateAgent estateAgentCalculator = new EstateAgent();
 
         // Display the Sales Report Header
-        System.out.println("Estate Agents Sales Report");
-        System.out.println("...................................................................................................................");
-        System.out.printf("%-15s %-15s %-23s %-15s%n", "", "Jan", "Feb", "Mar");
-
+        System.out.println("Estate Agents Sales Report \n");
+ 
+        System.out.printf("%-15s %-15s %-23s %-15s%n \n", "", "Jan", "Feb", "Mar");
+       System.out.println("...................................................................................................................");
         // Display the Sales Report Data
         for (String[] estateAgent : estateAgentsSales) {
             System.out.printf("%-15s ", estateAgent[0]); // Display estate agent names
@@ -97,4 +97,5 @@ Different ways to declare and initialize 2-D array in Java (2023) GeeksforGeeks.
 Available at: https://www.geeksforgeeks.org/different-ways-to-declare-and-initialize-2-d-array-in-java/ (Accessed: 22 November 2023). 
 
 */
+
 
