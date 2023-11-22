@@ -6,11 +6,28 @@ package st10228343question2;
 
 import java.text.NumberFormat;
 
+/**
+ * A utility class for formatting currency values in South African Rand (ZAR).
+ */
 public class CurrencyFormatter {
+
+    /**
+     * Formats the given value as currency in South African Rand (ZAR).
+     *
+     * @param value The numeric value to be formatted.
+     * @return A string representing the formatted currency value.
+     */
     public String formatCurrency(double value) {
+        // Create a NumberFormat instance for currency formatting
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
-        currencyFormat.setCurrency(NumberFormat.getCurrencyInstance().getCurrency());  // Set currency to ZAR
+        
+        // Set the currency to South African Rand (ZAR)
+        currencyFormat.setCurrency(NumberFormat.getCurrencyInstance().getCurrency());
+
+        // Format the value as currency
         String formattedValue = currencyFormat.format(value);
-        return formattedValue.replace("£", "R");  // Remove currency symbol
+
+        // Replace the currency symbol with "R" for South African Rand
+        return formattedValue.replace("£", "R");
     }
 }
