@@ -63,7 +63,7 @@ public class St10228343Question1 {
             totalSales[i] = estateAgentCalculator.estateAgentSales(convertStringArrayToDoubleArray(estateAgentsSales[i], 1));
         }
         int topAgent = estateAgentCalculator.topEstateAgent(totalSales);
-        System.out.println("\nThe Top-Selling Estate Agent is: " + estateAgentsSales[topAgent][0]);
+        System.out.println("\nTop Performing Estate Agent : " + estateAgentsSales[topAgent][0]);
     }
 
     private static double[] convertStringArrayToDoubleArray(String[] array, int startIndex) {
