@@ -1,18 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+// ... (Previous package and imports remain unchanged)
+
+/**
+ * GUI application for capturing estate agent information and generating commission reports.
+ * The application includes features to process reports, clear fields, and save reports to a file.
+ * Uses Swing for the graphical user interface.
+ *
+ * @author Extinction
  */
-package st10228343question2;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
 public class EstateAgentCommissionApp extends JFrame {
+    // Components for the GUI
     private JComboBox<String> locationComboBox;
     private JTextField nameTextField;
     private JTextField priceTextField;
@@ -21,6 +17,10 @@ public class EstateAgentCommissionApp extends JFrame {
     private JLabel estateAgentReportLabel;
     private IEstateAgent estateAgent;
 
+    /**
+     * Constructs the EstateAgentCommissionApp.
+     * Initializes the GUI components, sets up the layout, and makes the frame visible.
+     */
     public EstateAgentCommissionApp() {
         // Set up the frame
         setTitle("Estate Agent Commission App");
@@ -122,9 +122,14 @@ public class EstateAgentCommissionApp extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
+        // Initialize the estate agent instance
         estateAgent = new EstateAgent();
     }
 
+    /**
+     * Processes the estate agent report, calculates commission, and displays the report.
+     * Validates input, performs calculations, formats currency, and updates the report text area.
+     */
     private void processReport() {
         // Validate data
         String agentName = nameTextField.getText();
@@ -161,6 +166,9 @@ public class EstateAgentCommissionApp extends JFrame {
         reportTextArea.setText(report);
     }
 
+    /**
+     * Clears all input fields and the report text area.
+     */
     private void clearFields() {
         locationComboBox.setSelectedIndex(0);
         nameTextField.setText("");
@@ -169,6 +177,10 @@ public class EstateAgentCommissionApp extends JFrame {
         reportTextArea.setText("");
     }
 
+    /**
+     * Saves the current estate agent report to a file named "report.txt".
+     * Validates input, performs file writing, and displays success or error messages.
+     */
     private void saveReportToFile() {
         // Validate data
         String agentName = nameTextField.getText();
@@ -200,6 +212,12 @@ public class EstateAgentCommissionApp extends JFrame {
         }
     }
 
+    /**
+     * Entry point for the application.
+     * Launches the EstateAgentCommissionApp.
+     *
+     * @param args Command line arguments (not used in this application).
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -209,3 +227,4 @@ public class EstateAgentCommissionApp extends JFrame {
         });
     }
 }
+
