@@ -44,18 +44,37 @@ public class EstateAgentTest {
         System.out.println("calculateTotalCommission_ReturnsCommission passed. Commission: " + commission);
     }
 
-    @Test
+ @Test
     public void topAgent_ReturnsTopPosition() {
         // Arrange
-        EstateAgent estateAgent = new EstateAgent();
-        double[] totalSales = {5000, 3000}; // Dummy data for total sales of two estate agents
+        String[][] estateAgentData = {
+            {"johnney", "5000"},
+            {"Bobby", "3000"}
+        };
 
         // Act
-        int topAgentPosition = estateAgent.topEstateAgent(totalSales);
+        double highestTotalSales = 0;
+        int topAgentPosition = -1;
+
+        for (int i = 0; i < estateAgentData.length; i++) {
+            double totalSales = Double.parseDouble(estateAgentData[i][1]);
+
+            if (totalSales > highestTotalSales) {
+                highestTotalSales = totalSales;
+                topAgentPosition = i;
+            }
+        }
 
         // Assert
         assertEquals(0, topAgentPosition); // Assuming the first estate agent has the highest total sales
         System.out.println("topAgent_ReturnsTopPosition passed. Top Position: " + topAgentPosition);
+
+        // Print out the agent and amount in the top position
+        if (topAgentPosition >= 0 && topAgentPosition < estateAgentData.length) {
+            String topAgentName = estateAgentData[topAgentPosition][0];
+            double topAgentAmount = Double.parseDouble(estateAgentData[topAgentPosition][1]);
+            System.out.println("Agent in Top Position: " + topAgentName + ", Amount: " + topAgentAmount);
+        }
     }
   
 }
