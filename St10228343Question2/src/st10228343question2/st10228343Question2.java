@@ -12,6 +12,9 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 /**
  * GUI application for capturing estate agent information and generating commission reports.
  * The application includes features to process reports, clear fields, and save reports to a file.
@@ -39,17 +42,26 @@ public class st10228343Question2 extends JFrame {
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Create components
+        // Create a rounded border
+        Border roundedBorder = new LineBorder(Color.BLACK, 1, true);
+        
+        // Create components with rounded edges
         String[] locations = {"Cape Town", "Durban", "Pretoria"};
         locationComboBox = new JComboBox<>(locations);
+        locationComboBox.setBorder(roundedBorder);
         nameTextField = new JTextField(20);
+        nameTextField.setBorder(roundedBorder);
         priceTextField = new JTextField(20);
+        priceTextField.setBorder(roundedBorder);
         commissionTextField = new JTextField(20);
+        commissionTextField.setBorder(roundedBorder);
         reportTextArea = new JTextArea(10, 30);
         reportTextArea.setEditable(false);
+        reportTextArea.setBorder(roundedBorder);
 
         estateAgentReportLabel = new JLabel("ESTATE AGENT REPORT");
         estateAgentReportLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        estateAgentReportLabel.setBorder(roundedBorder);
 
         // Create menu bar
         JMenuBar menuBar = new JMenuBar();
@@ -92,7 +104,7 @@ public class st10228343Question2 extends JFrame {
         setLayout(new BorderLayout());
 
         JPanel inputPanel = new JPanel(new GridLayout(4, 2, 5, 5));
-        inputPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        inputPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
         inputPanel.add(new JLabel("Location:"));
         inputPanel.add(locationComboBox);
         inputPanel.add(new JLabel("Agent Name:"));
