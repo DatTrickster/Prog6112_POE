@@ -81,4 +81,7 @@ Code reference:
 [solved] Q11 contain a twodimensional array to contain three property - software development (IPMA6212) (no date) Studocu. 
 Available at: https://www.studocu.com/en-za/messages/question/4655379/q11-contain-a-two-dimensional-array-to-contain-three-property-sales-for-january-february-and (Accessed: 22 November 2023). 
 
+Different ways to declare and initialize 2-D array in Java (2023) GeeksforGeeks. 
+Available at: https://www.geeksforgeeks.org/different-ways-to-declare-and-initialize-2-d-array-in-java/ (Accessed: 22 November 2023). 
+
 */
