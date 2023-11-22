@@ -2,13 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package st10228343question1;
 
 /**
  * Implementation of the IEstateAgent interface representing an Estate Agent.
  * This class provides methods to calculate estate agent sales, commission, and find the top-performing estate agent.
  * 
- * @author Extinction
+ * @author Your Name
  */
 public class EstateAgent implements IEstateAgent {
 
@@ -49,6 +50,7 @@ public class EstateAgent implements IEstateAgent {
         int topAgent = 0;
         double maxSales = totalSales[0];
 
+        // Loop through the array to find the top-performing estate agent
         for (int i = 1; i < totalSales.length; i++) {
             if (totalSales[i] > maxSales) {
                 maxSales = totalSales[i];
@@ -60,8 +62,3 @@ public class EstateAgent implements IEstateAgent {
     }
 }
 
-/*
-Code reference:
-[solved] Q11 contain a two-dimensional array to contain three property - software development (IPMA6212) (no date) Studocu. 
-Available at: https://www.studocu.com/en-za/messages/question/4655379/q11-contain-a-two-dimensional-array-to-contain-three-property-sales-for-january-february-and (Accessed: 22 November 2023).
-*/
