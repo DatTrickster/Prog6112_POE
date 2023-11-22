@@ -228,3 +228,10 @@ public class EstateAgentCommissionApp extends JFrame {
     }
 }
 
+/*
+
+Interfaces (no date) Interfaces (The JavaTM Tutorials &gt; Learning the Java Language &gt; Interfaces and Inheritance).
+Available at: https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html (Accessed: 22 November 2023). 
+
+
+*/
