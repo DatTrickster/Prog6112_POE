@@ -16,7 +16,7 @@ public class EstateAgentTest {
     public EstateAgentTest() {
     }
 
-     @Test
+    @Test
     public void calculateTotalSales_ReturnsTotalSales() {
         // Arrange
         EstateAgent estateAgent = new EstateAgent();
@@ -44,37 +44,38 @@ public class EstateAgentTest {
         System.out.println("calculateTotalCommission_ReturnsCommission passed. Commission: " + commission);
     }
 
- @Test
-    public void topAgent_ReturnsTopPosition() {
-        // Arrange
-        String[][] estateAgentData = {
-            {"johnney", "5000"},
-            {"Bobby", "3000"}
-        };
+    @Test
+public void topAgent_ReturnsTopName() {
+    // Arrange
+    String[][] estateAgentData = {
+        {"johnney", "5000"},
+        {"Bobby", "3000"},
+        {"Alice", "7000"} // Added actual data for a third agent
+    };
 
-        // Act
-        double highestTotalSales = 0;
-        int topAgentPosition = -1;
+    // Act
+    double highestTotalSales = 0;
+    String topAgentName = null;
 
-        for (int i = 0; i < estateAgentData.length; i++) {
-            double totalSales = Double.parseDouble(estateAgentData[i][1]);
-
+        for (String[] estateAgentData1 : estateAgentData) {
+            double totalSales = Double.parseDouble(estateAgentData1[1]);
             if (totalSales > highestTotalSales) {
                 highestTotalSales = totalSales;
-                topAgentPosition = i;
+                topAgentName = estateAgentData1[0];
             }
         }
 
-        // Assert
-        assertEquals(0, topAgentPosition); // Assuming the first estate agent has the highest total sales
-        System.out.println("topAgent_ReturnsTopPosition passed. Top Position: " + topAgentPosition);
+    // Assert
+    assertNotNull(topAgentName);
+    assertEquals("Alice", topAgentName); // Assuming Alice has the highest total sales
+    System.out.println("topAgent_ReturnsTopName passed. Top Agent: " + topAgentName);
 
-        // Print out the agent and amount in the top position
-        if (topAgentPosition >= 0 && topAgentPosition < estateAgentData.length) {
-            String topAgentName = estateAgentData[topAgentPosition][0];
-            double topAgentAmount = Double.parseDouble(estateAgentData[topAgentPosition][1]);
-            System.out.println("Agent in Top Position: " + topAgentName + ", Amount: " + topAgentAmount);
-        }
+    // Print out the agent and amount in the top position
+    if (topAgentName != null) {
+        double topAgentAmount = Double.parseDouble(estateAgentData[2][1]); // Assuming the third agent has the highest total sales
+        System.out.println("Agent in Top Position: " + topAgentName + ", Amount: " + topAgentAmount);
     }
-  
+}
+
+
 }
